@@ -34,7 +34,8 @@ public enum ResultEnum implements BaseEnum {
     /**
      * 5** 服务器错误：内部服务器错误、网络异常
      */
-    ERROR(500, "服务器内部错误，无法完成请求");
+    ERROR(500, "服务器内部错误，无法完成请求"),
+    SERVER_BUSY(503, "服务器正忙，请稍后再试!");
 
     @EnumValue
     private final int code;

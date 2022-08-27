@@ -8,6 +8,8 @@ spring:
     pathmatch:
       # 配置策略
       matching-strategy: ant-path-matcher
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
 mybatis-plus:
 #  mapper-locations: classpath*:/mapper/**Mapper.xml
