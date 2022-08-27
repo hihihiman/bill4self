@@ -1,6 +1,6 @@
 package com.example.bill4self.utils;
 
-public enum  LogEnum {
+public enum LogEnum {
     BUSSINESS("bussiness"),
     PLATFORM("platform"),
     DB("db"),

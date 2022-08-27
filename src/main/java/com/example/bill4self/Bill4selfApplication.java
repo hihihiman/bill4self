@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.example.bill4self.*.mapper")
+@MapperScan("com.example.bill4self.**.mapper")
 public class Bill4selfApplication {
 
     public static void main(String[] args) {
