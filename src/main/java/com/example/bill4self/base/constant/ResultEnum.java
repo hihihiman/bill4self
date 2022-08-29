@@ -30,6 +30,7 @@ public enum ResultEnum implements BaseEnum {
      */
     BAD_REQUEST(400, "客户端请求的语法错误，服务器无法理解"),
     UNAUTHORIZED(401, "用户身份认证失败"),
+    NOT_ALLOWED(402, "操作不允许"),
 
     /**
      * 5** 服务器错误：内部服务器错误、网络异常

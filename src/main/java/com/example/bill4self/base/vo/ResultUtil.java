@@ -1,7 +1,6 @@
 package com.example.bill4self.base.vo;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +17,12 @@ public class ResultUtil {
      * @param page
      * @return
      */
-    public static Result<Map<String,Object>> buildPageResult(IPage<?> page){
-        Map<String,Object> data = new HashMap<>(4);
-        data.put("count",page.getTotal());
-        data.put("current",page.getCurrent());
-        data.put("page_size",page.getSize());
-        data.put("records",page.getRecords());
+    public static Result<Map<String, Object>> buildPageResult(IPage<?> page) {
+        Map<String, Object> data = new HashMap<>(4);
+        data.put("count", page.getTotal());
+        data.put("current", page.getCurrent());
+        data.put("page_size", page.getSize());
+        data.put("records", page.getRecords());
         return Result.success(data);
     }
 
@@ -33,10 +32,10 @@ public class ResultUtil {
      * @param success
      * @return
      */
-    public static Result<Object> buildResult(boolean success){
-        if (success){
+    public static Result<Object> buildResult(boolean success) {
+        if (success) {
             return Result.success(null);
-        }else {
+        } else {
             return Result.error("操作失败");
         }
     }

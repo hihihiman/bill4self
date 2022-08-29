@@ -1,6 +1,5 @@
 package com.example.bill4self.system.controller;
 
-import com.example.bill4self.base.constant.ResultEnum;
 import com.example.bill4self.base.vo.Result;
 import com.example.bill4self.system.dto.LoginDto;
 import com.example.bill4self.system.dto.LoginRequest;

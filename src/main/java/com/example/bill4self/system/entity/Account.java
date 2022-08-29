@@ -1,6 +1,7 @@
 package com.example.bill4self.system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.bill4self.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
@@ -50,5 +51,8 @@ public class Account extends BaseEntity {
     @ApiModelProperty("邮箱")
     private String email;
 
+    @TableField(exist = false)
+    @ApiModelProperty("角色名称")
+    private String roleName;
 
 }

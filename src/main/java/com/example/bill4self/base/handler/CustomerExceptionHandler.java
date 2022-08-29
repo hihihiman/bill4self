@@ -23,6 +23,6 @@ public class CustomerExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Result execption(Exception e) {
         log.error("未知异常！", e);
-        return Result.error(ResultEnum.SERVER_BUSY.getValue(),ResultEnum.SERVER_BUSY.getName());
+        return Result.error(ResultEnum.SERVER_BUSY.getValue(), ResultEnum.SERVER_BUSY.getName());
     }
 }

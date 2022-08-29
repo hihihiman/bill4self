@@ -2,6 +2,7 @@ package com.example.bill4self.system.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.bill4self.system.dto.ResourceVo;
+import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Resource;
 
 import java.util.List;
@@ -23,4 +24,11 @@ public interface ResourceService extends IService<Resource> {
      * @return
      */
     List<ResourceVo> listResourceByRoleId(Long roleId);
+
+    /**
+     * 查询系统资源，供前端组件渲染
+     *
+     * @return
+     */
+    List<TreeVo> listResource();
 }

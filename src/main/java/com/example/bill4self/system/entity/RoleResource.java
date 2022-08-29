@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("role_resource")
 @ApiModel(value = "RoleResource对象", description = "角色资源表")
-public class RoleResource extends BaseEntity {
+public class RoleResource  {
 
     private static final long serialVersionUID = 1L;
 

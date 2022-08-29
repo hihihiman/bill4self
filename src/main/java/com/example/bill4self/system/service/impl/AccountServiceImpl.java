@@ -1,6 +1,10 @@
 package com.example.bill4self.system.service.impl;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.crypto.digest.MD5;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.bill4self.system.dto.LoginDto;
 import com.example.bill4self.system.dto.LoginRequest;
@@ -8,6 +12,8 @@ import com.example.bill4self.system.entity.Account;
 import com.example.bill4self.system.mapper.AccountMapper;
 import com.example.bill4self.system.service.AccountService;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -42,5 +48,15 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         // 成功的跳转路径
         loginDTO.setPath("login/main");
         return loginDTO;
+    }
+
+    @Override
+    public IPage<Account> accountPage(Page<Account> page, Wrapper<Account> wrapper) {
+        return baseMapper.accountPage(page, wrapper);
+    }
+
+    @Override
+    public Account getAccountById(Long id) {
+        return baseMapper.selectAccountById(id);
     }
 }

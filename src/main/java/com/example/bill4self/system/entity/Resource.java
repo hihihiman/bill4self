@@ -19,7 +19,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @ApiModel(value = "Resource对象", description = "资源表")
-public class Resource extends BaseEntity {
+public class Resource  {
 
     private static final long serialVersionUID = 1L;
 

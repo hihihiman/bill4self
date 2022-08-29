@@ -2,8 +2,6 @@ package com.example.bill4self.system.controller;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.bill4self.base.vo.Result;
 import com.example.bill4self.base.vo.ResultUtil;
@@ -41,35 +39,40 @@ public class CustomerController {
     public Result list(@RequestParam(required = false) String realName,
                        @RequestParam(required = false) String phone,
                        @RequestParam Long page,
-                       @RequestParam Long limit){
+                       @RequestParam Long limit) {
 
         Page<Customer> customerPage = customerService.lambdaQuery()
                 .like(StrUtil.isNotBlank(realName), Customer::getRealName, realName)
                 .like(StrUtil.isNotBlank(phone), Customer::getPhone, phone)
                 .orderByDesc(Customer::getCustomerId)
                 .page(new Page<>(page, limit));
-         return ResultUtil.buildPageResult(customerPage);
+        return ResultUtil.buildPageResult(customerPage);
     }
 
     @PostMapping("add")
     @ApiOperation(value = "新增")
-    public Result add(@RequestBody Customer customer){
+    public Result add(@RequestBody Customer customer) {
         return ResultUtil.buildResult(customerService.save(customer));
     }
 
 
-
     @GetMapping("detail/{id}")
     @ApiOperation(value = "查询")
-    public Result detail(@PathVariable Long id){
+    public Result detail(@PathVariable Long id) {
         final Customer customer = customerService.getById(id);
         return Result.success(customer);
     }
 
     @PutMapping("update")
     @ApiOperation(value = "修改")
-    public Result update(@RequestBody Customer customer){
+    public Result update(@RequestBody Customer customer) {
         return ResultUtil.buildResult(customerService.updateById(customer));
+    }
+
+    @DeleteMapping("delete/{id}")
+    @ApiOperation(value = "删除")
+    public Result delete(@PathVariable Long id) {
+        return ResultUtil.buildResult(customerService.removeById(id));
     }
 
 

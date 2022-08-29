@@ -26,14 +26,14 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         log.info("start insert fill ....");
-        if (metaObject.hasSetter(CREATE_TIME)){
+        if (metaObject.hasSetter(CREATE_TIME)) {
             this.strictInsertFill(metaObject, CREATE_TIME, LocalDateTime::now, LocalDateTime.class);
         }
-        if (metaObject.hasSetter(CREATE_ACCOUNT_ID)){
+        if (metaObject.hasSetter(CREATE_ACCOUNT_ID)) {
             final Account account = (Account) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()).getAttribute("account", RequestAttributes.SCOPE_SESSION);
-            if (account!=null){
+            if (account != null) {
                 final Long accountId = account.getAccountId();
-                this.strictInsertFill(metaObject, CREATE_ACCOUNT_ID, Long.class,accountId);
+                this.strictInsertFill(metaObject, CREATE_ACCOUNT_ID, Long.class, accountId);
             }
         }
 
@@ -42,14 +42,14 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         log.info("start update fill ....");
-        if (metaObject.hasSetter(MODIFIED_TIME)){
+        if (metaObject.hasSetter(MODIFIED_TIME)) {
             this.strictUpdateFill(metaObject, MODIFIED_TIME, LocalDateTime::now, LocalDateTime.class);
         }
-        if (metaObject.hasSetter(MODIFIED_ACCOUNT_ID)){
+        if (metaObject.hasSetter(MODIFIED_ACCOUNT_ID)) {
             final Account account = (Account) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()).getAttribute("account", RequestAttributes.SCOPE_SESSION);
-            if (account!=null){
+            if (account != null) {
                 final Long accountId = account.getAccountId();
-                this.strictUpdateFill(metaObject, MODIFIED_ACCOUNT_ID, Long.class,accountId);
+                this.strictUpdateFill(metaObject, MODIFIED_ACCOUNT_ID, Long.class, accountId);
             }
         }
     }
