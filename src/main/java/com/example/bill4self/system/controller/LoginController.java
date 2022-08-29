@@ -49,7 +49,7 @@ public class LoginController {
             session.setAttribute("account", account);
             final List<ResourceVo> resourceVos = resourceService.listResourceByRoleId(account.getRoleId());
             final Set<String> convert = resourceService.convert(resourceVos);
-            session.setAttribute("module",convert);
+            session.setAttribute("module", convert);
             return Result.success(resourceVos);
         } else {
             return Result.error(error);

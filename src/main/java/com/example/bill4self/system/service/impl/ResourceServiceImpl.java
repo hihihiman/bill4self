@@ -81,13 +81,13 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
         } else {
             // 修改
             QueryWrapper<Resource> query = Wrappers.query();
-            query.eq(flag==1,"rr.role_id",roleId)
+            query.eq(flag == 1, "rr.role_id", roleId)
                     .isNull("re.parent_id").orderByAsc("re.sort");
             final List<TreeVo> treeVos = baseMapper.listResourceByRoleId(query, roleId);
             treeVos.forEach(t -> {
                 t.setChecked(false);
                 QueryWrapper<Resource> subQuery = Wrappers.query();
-                subQuery.eq(flag==1,"rr.role_id",roleId)
+                subQuery.eq(flag == 1, "rr.role_id", roleId)
                         .eq("re.parent_id", t.getId())
                         .orderByAsc("re.sort");
                 final List<TreeVo> children = baseMapper.listResourceByRoleId(subQuery, roleId);
@@ -101,18 +101,18 @@ public class ResourceServiceImpl extends ServiceImpl<ResourceMapper, Resource> i
 
     @Override
     public Set<String> convert(List<ResourceVo> resourceVos) {
-        Set<String > module = new HashSet<>();
-        resourceVos.forEach(r->{
+        Set<String> module = new HashSet<>();
+        resourceVos.forEach(r -> {
             final String url = r.getUrl();
-            if (StrUtil.isNotBlank(url)){
-                module.add(url.substring(0,url.indexOf("/")));
+            if (StrUtil.isNotBlank(url)) {
+                module.add(url.substring(0, url.indexOf("/")));
             }
             final List<ResourceVo> subs = r.getSubs();
-            if (CollectionUtil.isNotEmpty(subs)){
-                subs.forEach(sub->{
+            if (CollectionUtil.isNotEmpty(subs)) {
+                subs.forEach(sub -> {
                     final String subUrl = sub.getUrl();
-                    if (StrUtil.isNotBlank(subUrl)){
-                        module.add(subUrl.substring(0,subUrl.indexOf("/")));
+                    if (StrUtil.isNotBlank(subUrl)) {
+                        module.add(subUrl.substring(0, subUrl.indexOf("/")));
                     }
                 });
             }

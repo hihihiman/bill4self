@@ -1,6 +1,6 @@
 package com.example.bill4self.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.bill4self.base.service.MyService;
 import com.example.bill4self.system.entity.RoleResource;
 
 /**
@@ -11,6 +11,6 @@ import com.example.bill4self.system.entity.RoleResource;
  * @author Josh
  * @since 2022-08-26
  */
-public interface RoleResourceService extends IService<RoleResource> {
+public interface RoleResourceService extends MyService<RoleResource> {
 
 }

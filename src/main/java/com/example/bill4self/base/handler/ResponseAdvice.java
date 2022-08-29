@@ -48,13 +48,13 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
             return o;
         }
 
-        if (o instanceof ArrayList){
-            if (((ArrayList) o).get(0) instanceof SwaggerResource){
+        if (o instanceof ArrayList) {
+            if (((ArrayList) o).get(0) instanceof SwaggerResource) {
                 return o;
             }
         }
 
-        if (o instanceof Json){
+        if (o instanceof Json) {
             return o;
         }
 

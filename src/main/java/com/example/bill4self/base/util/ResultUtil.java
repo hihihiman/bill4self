@@ -1,6 +1,7 @@
-package com.example.bill4self.base.vo;
+package com.example.bill4self.base.util;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.bill4self.base.vo.Result;
 
 import java.util.HashMap;
 import java.util.Map;

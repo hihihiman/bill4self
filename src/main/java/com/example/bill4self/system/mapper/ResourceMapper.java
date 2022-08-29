@@ -1,8 +1,8 @@
 package com.example.bill4self.system.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
+import com.example.bill4self.base.mapper.MyMapper;
 import com.example.bill4self.system.dto.ResourceVo;
 import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Resource;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author Josh
  * @since 2022-08-26
  */
-public interface ResourceMapper extends BaseMapper<Resource> {
+public interface ResourceMapper extends MyMapper<Resource> {
 
     /**
      * 查询当前登录人的资源

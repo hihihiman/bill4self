@@ -1,16 +1,19 @@
 package com.example.bill4self.system.controller;
 
 
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.bill4self.base.util.MyQuery;
+import com.example.bill4self.base.util.QueryUtil;
+import com.example.bill4self.base.util.ResultUtil;
 import com.example.bill4self.base.vo.Result;
-import com.example.bill4self.base.vo.ResultUtil;
 import com.example.bill4self.system.entity.Customer;
 import com.example.bill4self.system.service.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -36,17 +39,17 @@ public class CustomerController {
 
     @GetMapping("list")
     @ApiOperation(value = "条件查询列表")
-    public Result list(@RequestParam(required = false) String realName,
-                       @RequestParam(required = false) String phone,
-                       @RequestParam Long page,
-                       @RequestParam Long limit) {
+    public Result list(@RequestParam Map<String, String> param) {
 
-        Page<Customer> customerPage = customerService.lambdaQuery()
-                .like(StrUtil.isNotBlank(realName), Customer::getRealName, realName)
-                .like(StrUtil.isNotBlank(phone), Customer::getPhone, phone)
-                .orderByDesc(Customer::getCustomerId)
-                .page(new Page<>(page, limit));
-        return ResultUtil.buildPageResult(customerPage);
+        final MyQuery<Customer> myQuery = QueryUtil.buildMyQuery(param);
+        final Page<Customer> page = customerService.page(myQuery.getPage(), myQuery.getWrapper().orderByDesc("create_time"));
+
+//        Page<Customer> customerPage = customerService.lambdaQuery()
+//                .like(StrUtil.isNotBlank(realName), Customer::getRealName, realName)
+//                .like(StrUtil.isNotBlank(phone), Customer::getPhone, phone)
+//                .orderByDesc(Customer::getCustomerId)
+//                .page(new Page<>(page, limit));
+        return ResultUtil.buildPageResult(page);
     }
 
     @PostMapping("add")
@@ -72,7 +75,9 @@ public class CustomerController {
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除")
     public Result delete(@PathVariable Long id) {
-        return ResultUtil.buildResult(customerService.removeById(id));
+        Customer customer = new Customer();
+        customer.setCustomerId(id);
+        return ResultUtil.buildResult(customerService.removeByIdWithFill(customer));
     }
 
 

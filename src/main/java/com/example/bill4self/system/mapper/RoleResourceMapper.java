@@ -1,6 +1,6 @@
 package com.example.bill4self.system.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.bill4self.base.mapper.MyMapper;
 import com.example.bill4self.system.entity.RoleResource;
 
 /**
@@ -11,6 +11,6 @@ import com.example.bill4self.system.entity.RoleResource;
  * @author Josh
  * @since 2022-08-26
  */
-public interface RoleResourceMapper extends BaseMapper<RoleResource> {
+public interface RoleResourceMapper extends MyMapper<RoleResource> {
 
 }

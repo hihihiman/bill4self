@@ -1,12 +1,9 @@
 package com.example.bill4self.base.handler;
 
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -29,10 +26,10 @@ public class MyInterceptor implements HandlerInterceptor {
         // account
         Set<String> urls = (Set<String>) request.getSession().getAttribute("module");
         boolean pass = false;
-        if (urls!=null){
+        if (urls != null) {
             pass = urls.stream().anyMatch(substring::equals);
         }
-        if (!pass){
+        if (!pass) {
             response.sendRedirect("/");
         }
         return pass;

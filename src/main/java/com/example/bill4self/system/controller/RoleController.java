@@ -2,8 +2,8 @@ package com.example.bill4self.system.controller;
 
 
 import com.example.bill4self.base.constant.ResultEnum;
+import com.example.bill4self.base.util.ResultUtil;
 import com.example.bill4self.base.vo.Result;
-import com.example.bill4self.base.vo.ResultUtil;
 import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Account;
 import com.example.bill4self.system.entity.Role;
@@ -72,16 +72,16 @@ public class RoleController {
     @ApiOperation(value = "删除")
     public Result delete(@PathVariable Long id) {
         final Integer count = accountService.lambdaQuery().eq(Account::getRoleId, id).count();
-        if (count>0){
-            return Result.error(ResultEnum.NOT_ALLOWED.getValue(),"有账号正拥有该角色");
+        if (count > 0) {
+            return Result.error(ResultEnum.NOT_ALLOWED.getValue(), "有账号正拥有该角色");
         }
         return ResultUtil.buildResult(roleService.removeById(id));
     }
 
-    @GetMapping({"list-resource", "list-resource/{roleId}","list-resource/{roleId}/{flag}"})
+    @GetMapping({"list-resource", "list-resource/{roleId}", "list-resource/{roleId}/{flag}"})
     @ApiOperation(value = "查询所有资源")
-    public Result<List<TreeVo>> listResource(@PathVariable(required = false) Long roleId,@PathVariable(required = false) Integer flag) {
-        return Result.success(resourceService.listResource(roleId,flag));
+    public Result<List<TreeVo>> listResource(@PathVariable(required = false) Long roleId, @PathVariable(required = false) Integer flag) {
+        return Result.success(resourceService.listResource(roleId, flag));
     }
 
 }

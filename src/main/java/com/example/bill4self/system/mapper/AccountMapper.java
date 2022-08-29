@@ -1,10 +1,10 @@
 package com.example.bill4self.system.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.bill4self.base.mapper.MyMapper;
 import com.example.bill4self.system.entity.Account;
 import org.apache.ibatis.annotations.Param;
 
@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Param;
  * @author Josh
  * @since 2022-08-26
  */
-public interface AccountMapper extends BaseMapper<Account> {
+public interface AccountMapper extends MyMapper<Account> {
 
     /**
      * 分页查询账号

@@ -3,7 +3,7 @@ package com.example.bill4self.system.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.bill4self.base.service.MyService;
 import com.example.bill4self.system.dto.LoginDto;
 import com.example.bill4self.system.dto.LoginRequest;
 import com.example.bill4self.system.entity.Account;
@@ -16,7 +16,7 @@ import com.example.bill4self.system.entity.Account;
  * @author Josh
  * @since 2022-08-26
  */
-public interface AccountService extends IService<Account> {
+public interface AccountService extends MyService<Account> {
 
     /**
      * 登录

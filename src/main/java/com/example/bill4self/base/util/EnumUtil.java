@@ -1,6 +1,8 @@
-package com.example.bill4self.base.constant;
+package com.example.bill4self.base.util;
 
-public final class EnumUtils {
+import com.example.bill4self.base.constant.BaseEnum;
+
+public final class EnumUtil {
 
     /**
      * 判断枚举值是否存在于指定枚举数组中

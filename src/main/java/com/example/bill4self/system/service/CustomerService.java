@@ -1,6 +1,6 @@
 package com.example.bill4self.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.bill4self.base.service.MyService;
 import com.example.bill4self.system.entity.Customer;
 
 /**
@@ -11,6 +11,6 @@ import com.example.bill4self.system.entity.Customer;
  * @author Josh
  * @since 2022-08-26
  */
-public interface CustomerService extends IService<Customer> {
+public interface CustomerService extends MyService<Customer> {
 
 }

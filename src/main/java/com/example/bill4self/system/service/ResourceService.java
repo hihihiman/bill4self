@@ -1,6 +1,6 @@
 package com.example.bill4self.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.bill4self.base.service.MyService;
 import com.example.bill4self.system.dto.ResourceVo;
 import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Resource;
@@ -16,7 +16,7 @@ import java.util.Set;
  * @author Josh
  * @since 2022-08-26
  */
-public interface ResourceService extends IService<Resource> {
+public interface ResourceService extends MyService<Resource> {
 
     /**
      * 根据角色id查询拥有的资源

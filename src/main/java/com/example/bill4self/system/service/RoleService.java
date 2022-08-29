@@ -1,6 +1,6 @@
 package com.example.bill4self.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.bill4self.base.service.MyService;
 import com.example.bill4self.system.entity.Role;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Josh
  * @since 2022-08-26
  */
-public interface RoleService extends IService<Role> {
+public interface RoleService extends MyService<Role> {
 
     /**
      * 获得权限列表
