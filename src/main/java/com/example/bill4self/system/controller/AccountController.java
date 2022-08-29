@@ -13,7 +13,6 @@ import com.example.bill4self.base.vo.ResultUtil;
 import com.example.bill4self.system.dto.AccountQuery;
 import com.example.bill4self.system.entity.Account;
 import com.example.bill4self.system.service.AccountService;
-import com.example.bill4self.system.service.RoleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

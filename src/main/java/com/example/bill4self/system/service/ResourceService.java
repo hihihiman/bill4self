@@ -6,6 +6,7 @@ import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Resource;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -30,5 +31,13 @@ public interface ResourceService extends IService<Resource> {
      *
      * @return
      */
-    List<TreeVo> listResource();
+    List<TreeVo> listResource(Long roleId, Integer flag);
+
+    /**
+     * 获取模块名称，如 /account/list -> 模块名称为：account
+     *
+     * @param resourceVos
+     * @return
+     */
+    Set<String> convert(List<ResourceVo> resourceVos);
 }

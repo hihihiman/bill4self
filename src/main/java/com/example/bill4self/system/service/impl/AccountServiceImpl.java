@@ -1,6 +1,5 @@
 package com.example.bill4self.system.service.impl;
 
-import cn.hutool.core.lang.UUID;
 import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -12,8 +11,6 @@ import com.example.bill4self.system.entity.Account;
 import com.example.bill4self.system.mapper.AccountMapper;
 import com.example.bill4self.system.service.AccountService;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * <p>

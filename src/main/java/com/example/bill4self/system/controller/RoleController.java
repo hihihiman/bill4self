@@ -1,13 +1,13 @@
 package com.example.bill4self.system.controller;
 
 
-import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.bill4self.base.constant.ResultEnum;
 import com.example.bill4self.base.vo.Result;
 import com.example.bill4self.base.vo.ResultUtil;
 import com.example.bill4self.system.dto.TreeVo;
-import com.example.bill4self.system.entity.Customer;
+import com.example.bill4self.system.entity.Account;
 import com.example.bill4self.system.entity.Role;
+import com.example.bill4self.system.service.AccountService;
 import com.example.bill4self.system.service.ResourceService;
 import com.example.bill4self.system.service.RoleService;
 import io.swagger.annotations.ApiOperation;
@@ -31,6 +31,8 @@ public class RoleController {
     private RoleService roleService;
     @Autowired
     private ResourceService resourceService;
+    @Autowired
+    private AccountService accountService;
 
 //    @GetMapping("list")
 //    @ApiOperation(value = "条件查询列表")
@@ -50,7 +52,7 @@ public class RoleController {
     @PostMapping("add")
     @ApiOperation(value = "新增")
     public Result add(@RequestBody Role role) {
-        return ResultUtil.buildResult(roleService.save(role));
+        return ResultUtil.buildResult(roleService.saveRole(role));
     }
 
 
@@ -63,19 +65,23 @@ public class RoleController {
     @PutMapping("update")
     @ApiOperation(value = "修改")
     public Result update(@RequestBody Role role) {
-        return ResultUtil.buildResult(roleService.updateById(role));
+        return ResultUtil.buildResult(roleService.updateRole(role));
     }
 
     @DeleteMapping("delete/{id}")
     @ApiOperation(value = "删除")
     public Result delete(@PathVariable Long id) {
+        final Integer count = accountService.lambdaQuery().eq(Account::getRoleId, id).count();
+        if (count>0){
+            return Result.error(ResultEnum.NOT_ALLOWED.getValue(),"有账号正拥有该角色");
+        }
         return ResultUtil.buildResult(roleService.removeById(id));
     }
 
-    @GetMapping("list-resource")
+    @GetMapping({"list-resource", "list-resource/{roleId}","list-resource/{roleId}/{flag}"})
     @ApiOperation(value = "查询所有资源")
-    public Result<List<TreeVo>> listResource() {
-        return Result.success(resourceService.listResource());
+    public Result<List<TreeVo>> listResource(@PathVariable(required = false) Long roleId,@PathVariable(required = false) Integer flag) {
+        return Result.success(resourceService.listResource(roleId,flag));
     }
 
 }

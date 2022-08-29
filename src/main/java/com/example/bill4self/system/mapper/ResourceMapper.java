@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.example.bill4self.system.dto.ResourceVo;
+import com.example.bill4self.system.dto.TreeVo;
 import com.example.bill4self.system.entity.Resource;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,4 +27,6 @@ public interface ResourceMapper extends BaseMapper<Resource> {
      * @return
      */
     List<ResourceVo> listResource(@Param(Constants.WRAPPER) Wrapper<Resource> wrapper);
+
+    List<TreeVo> listResourceByRoleId(@Param(Constants.WRAPPER) Wrapper<Resource> wrapper, @Param("roleId") Long roleId);
 }

@@ -3,7 +3,6 @@ package com.example.bill4self.system.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.example.bill4self.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -23,7 +22,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("role_resource")
 @ApiModel(value = "RoleResource对象", description = "角色资源表")
-public class RoleResource  {
+public class RoleResource {
 
     private static final long serialVersionUID = 1L;
 

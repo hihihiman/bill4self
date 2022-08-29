@@ -1,6 +1,5 @@
 package com.example.bill4self.system.entity;
 
-import com.example.bill4self.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -19,7 +18,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @ApiModel(value = "Resource对象", description = "资源表")
-public class Resource  {
+public class Resource {
 
     private static final long serialVersionUID = 1L;
 

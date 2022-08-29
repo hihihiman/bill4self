@@ -11,6 +11,10 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+import springfox.documentation.spring.web.json.Json;
+import springfox.documentation.swagger.web.SwaggerResource;
+
+import java.util.ArrayList;
 
 @RestControllerAdvice
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
@@ -30,6 +34,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
      */
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+//        return o;
         //处理字符串类型数据
         if (o instanceof String) {
             try {
@@ -42,6 +47,17 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         if (o instanceof Result) {
             return o;
         }
+
+        if (o instanceof ArrayList){
+            if (((ArrayList) o).get(0) instanceof SwaggerResource){
+                return o;
+            }
+        }
+
+        if (o instanceof Json){
+            return o;
+        }
+
         return Result.success(o);
     }
 }

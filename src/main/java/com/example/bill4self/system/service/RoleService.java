@@ -21,4 +21,20 @@ public interface RoleService extends IService<Role> {
      * @return
      */
     List<Role> getRoleList();
+
+    /**
+     * 新增角色和角色所具有的资源
+     *
+     * @param role
+     * @return
+     */
+    boolean saveRole(Role role);
+
+    /**
+     * 修改角色和角色所具有的资源
+     *
+     * @param role
+     * @return
+     */
+    boolean updateRole(Role role);
 }

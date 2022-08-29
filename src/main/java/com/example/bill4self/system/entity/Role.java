@@ -1,6 +1,7 @@
 package com.example.bill4self.system.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.bill4self.base.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
@@ -8,6 +9,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 /**
  * <p>
@@ -34,6 +37,10 @@ public class Role extends BaseEntity {
 
     @ApiModelProperty("备注")
     private String remark;
+
+    @ApiModelProperty("前端选中的资源id数组")
+    @TableField(exist = false)
+    private List<Long> resourceIds;
 
 
 }
