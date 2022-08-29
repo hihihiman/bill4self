@@ -1,4 +1,4 @@
-package com.example.bill4self.config;
+package com.example.bill4self.base.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

@@ -26,4 +26,18 @@ public class ResultUtil {
         data.put("records",page.getRecords());
         return Result.success(data);
     }
+
+    /**
+     * 成功或失败的响应信息
+     *
+     * @param success
+     * @return
+     */
+    public static Result<Object> buildResult(boolean success){
+        if (success){
+            return Result.success(null);
+        }else {
+            return Result.error("操作失败");
+        }
+    }
 }

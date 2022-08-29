@@ -1,4 +1,4 @@
-package com.example.bill4self.config;
+package com.example.bill4self.base.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

@@ -1,4 +1,4 @@
-package com.example.bill4self.config;
+package com.example.bill4self.base.config;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;

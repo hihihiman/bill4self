@@ -1,4 +1,4 @@
-package com.example.bill4self.base.advice;
+package com.example.bill4self.base.handler;
 
 import com.example.bill4self.base.vo.Result;
 import com.fasterxml.jackson.core.JsonProcessingException;

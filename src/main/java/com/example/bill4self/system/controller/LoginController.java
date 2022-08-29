@@ -50,7 +50,7 @@ public class LoginController {
             final List<ResourceVo> resourceVos = resourceService.listResourceByRoleId(account.getRoleId());
             return Result.success(resourceVos);
         } else {
-            return Result.error(ResultEnum.ERROR.getValue(), error);
+            return Result.error(error);
         }
     }
 

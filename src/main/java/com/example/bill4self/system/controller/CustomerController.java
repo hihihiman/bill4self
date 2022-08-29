@@ -12,10 +12,7 @@ import com.example.bill4self.system.service.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -45,12 +42,35 @@ public class CustomerController {
                        @RequestParam(required = false) String phone,
                        @RequestParam Long page,
                        @RequestParam Long limit){
-         LambdaQueryWrapper<Customer> wrapper = Wrappers.<Customer>lambdaQuery()
+
+        Page<Customer> customerPage = customerService.lambdaQuery()
                 .like(StrUtil.isNotBlank(realName), Customer::getRealName, realName)
                 .like(StrUtil.isNotBlank(phone), Customer::getPhone, phone)
-                .orderByDesc(Customer::getCustomerId);
-         Page<Customer> customerPage = customerService.page(new Page<>(page, limit), wrapper);
+                .orderByDesc(Customer::getCustomerId)
+                .page(new Page<>(page, limit));
          return ResultUtil.buildPageResult(customerPage);
-
     }
+
+    @PostMapping("add")
+    @ApiOperation(value = "新增")
+    public Result add(@RequestBody Customer customer){
+        return ResultUtil.buildResult(customerService.save(customer));
+    }
+
+
+
+    @GetMapping("detail/{id}")
+    @ApiOperation(value = "查询")
+    public Result detail(@PathVariable Long id){
+        final Customer customer = customerService.getById(id);
+        return Result.success(customer);
+    }
+
+    @PutMapping("update")
+    @ApiOperation(value = "修改")
+    public Result update(@RequestBody Customer customer){
+        return ResultUtil.buildResult(customerService.updateById(customer));
+    }
+
+
 }

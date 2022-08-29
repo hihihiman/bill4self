@@ -1,4 +1,4 @@
-package com.example.bill4self.base.advice;
+package com.example.bill4self.base.handler;
 
 import com.example.bill4self.base.constant.ResultEnum;
 import com.example.bill4self.base.vo.Result;
@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.security.auth.message.AuthException;
 /**
  * 全局异常处理
  */
